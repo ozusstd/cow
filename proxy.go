@@ -695,6 +695,11 @@ func (c *clientConn) readResponse(sv *serverConn, r *Request, rp *Response) (err
 
 func (c *clientConn) getServerConn(r *Request) (*serverConn, error) {
 	siteInfo := siteStat.GetVisitCnt(r.URL)
+//	if debug {
+	//connect to URL:
+		info.Printf("%s", r.URL)
+//	}
+
 	// For CONNECT method, always create new connection.
 	if r.isConnect {
 		return c.createServerConn(r, siteInfo)
